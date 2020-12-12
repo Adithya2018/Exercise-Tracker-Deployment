@@ -23,7 +23,20 @@ export default class CreateExercise extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/users/')
+    // axios.get('http://localhost:5000/users/')
+    //   .then(response => {
+    //     if (response.data.length > 0) {
+    //       this.setState({
+    //         users: response.data.map(user => user.username),
+    //         username: response.data[0].username
+    //       })
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
+
+      axios.get('https://exercise-tracker-101.herokuapp.com/users/')
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -35,7 +48,6 @@ export default class CreateExercise extends Component {
       .catch((error) => {
         console.log(error);
       })
-
   }
 
   onChangeUsername(e) {
@@ -74,7 +86,7 @@ export default class CreateExercise extends Component {
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/add', exercise)
+    axios.post('https://exercise-tracker-101.herokuapp.com/exercises/add', exercise)
       .then(res => console.log(res.data));
 
     window.location = '/';
